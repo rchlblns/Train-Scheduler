@@ -22,9 +22,9 @@
             featured content or information.</p>
     </div>
 
-    <div class="container">
+    <div class="container table-responsive-sm-md">
         <h2>Current Schedule</h2>
-        <table class="table table-bordered" id="current-schedule">
+        <table class="table table-bordered table-hover" id="current-schedule">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Train Name</th>
@@ -36,25 +36,39 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>Shinkansen</td>
+                    <td>Kyoto</td>
+                    <td>30</td>
+                    <td>3:25 PM</td>
+                    <td>24</td>
                 </tr>
                 <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@mdo</td>
+                    <td>Eurostar</td>
+                    <td>Brussels</td>
+                    <td>80</td>
+                    <td>12:00 PM</td>
+                    <td>48</td>
                 </tr>
                 <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@mdo</td>
+                    <td>Sunset Limited</td>
+                    <td>New Orleans</td>
+                    <td>110</td>
+                    <td>8:30 PM</td>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <td>The Ghan</td>
+                    <td>Adelaide</td>
+                    <td>45</td>
+                    <td>9:45 AM</td>
+                    <td>160</td>
+                </tr>
+                <tr>
+                    <td>Maharaja's Express</td>
+                    <td>Mumbai</td>
+                    <td>1500</td>
+                    <td>7:50 AM</td>
+                    <td>1045</td>
                 </tr>
             </tbody>
         </table>
@@ -74,13 +88,13 @@
                 <input type="text" class="form-control" id="train-destination" placeholder="Enter destination">
             </div>
             <div class="form-group">
-                    <label for="time">First Train Time (Military Time)</label>
-                    <input type="text" class="form-control" id="train-time" placeholder="HH:MM">
-                </div>
-                <div class="form-group">
-                    <label for="frequency">Frequency</label>
-                    <input type="text" class="form-control" id="train-freq" placeholder="Enter frequency in minutes">
-                </div>
+                <label for="time">First Train Time (Military Time)</label>
+                <input type="text" class="form-control" id="train-time" placeholder="HH:MM">
+            </div>
+            <div class="form-group">
+                <label for="frequency">Frequency</label>
+                <input type="text" class="form-control" id="train-freq" placeholder="Enter frequency in minutes">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
