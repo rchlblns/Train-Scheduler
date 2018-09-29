@@ -14,24 +14,32 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
+    // Adding new train to train schedule table
     $("#add-train").on("click", function (event) {
 
         event.preventDefault();
 
+        //Grabs user input from form 
         name = $("#train-name").val().trim();
         destination = $("#train-destination").val().trim();
         time = $("#train-time").val().trim();
         freq = $("#train-freq").val().trim();
 
-        database.ref().push({
-
+        // Temp object to hold train data
+        var newTrain= {
             name: name,
             destination: destination,
             time: time,
-            freq: freq,
+            freq: freq
+        }
 
-        });
+        // Uploads new train to database
+        database.ref().push(newTrain);
 
+        $("#train-name").empty("");
+        $("#train-destination").empty("");
+        $("#train-time").empty("");
+        $("#train-freq").empty("");
     });
 
     database.ref().on("value", function(snapshot) {
@@ -60,8 +68,11 @@ $(document).ready(function() {
             <td>${snapshot.val().name}</td>
             <td>${snapshot.val().destination}</td>
             <td>${snapshot.val().freq}</td>
-            <td>${snapshot.val().time}</td>
         </tr>
         `)
     });
+
+    // //Calculating how many mins away the train is and the next arrival time
+    // var firstTime = database.val().time
+
 });
