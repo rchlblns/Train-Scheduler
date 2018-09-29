@@ -60,7 +60,7 @@ $(document).ready(function() {
         var convertedFirstTrain = moment(firstTrain, "HH:mm").subtract(1, "years");
         console.log(convertedFirstTrain);
 
-        var currentTime = moment();
+        var currentTime = moment().format("HH:mm");
         console.log("current time: " + currentTime);
 
         var diffTime = moment().diff(moment(convertedFirstTrain), "minutes");
@@ -74,8 +74,7 @@ $(document).ready(function() {
         var nextArrival = moment().add(minutesAway, "minutes").format("HH:mm");
         console.log("Next train at: " + nextArrival);
 
-
-        $("#current-time").text(currentTime);
+        $(".current-time").html("<h2> Current time is " + currentTime + "</h2>");
 
         $("#current-schedule").append(`
         <tr>
