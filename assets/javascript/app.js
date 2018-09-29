@@ -19,6 +19,12 @@ $(document).ready(function() {
 
         event.preventDefault();
 
+        //Empties submitted form data
+        $("#train-name").empty("");
+        $("#train-destination").empty("");
+        $("#train-time").empty("");
+        $("#train-freq").empty("");
+
         //Grabs user input from form 
         name = $("#train-name").val().trim();
         destination = $("#train-destination").val().trim();
@@ -36,11 +42,6 @@ $(document).ready(function() {
         // Uploads new train to database
         database.ref().push(newTrain);
 
-        //Empties submitted form data
-        $("#train-name").empty("");
-        $("#train-destination").empty("");
-        $("#train-time").empty("");
-        $("#train-freq").empty("");
     });
 
     // database.ref().on("value", function(snapshot) {
@@ -65,14 +66,17 @@ $(document).ready(function() {
 
     // Display added train information from database to page
     database.ref().on("child_added", function(snapshot){
-        
+
         var trainFreq = snapshot.val().freq;
+        console.log(snapshot.val().freq);
+
         var firstTrain = snapshot.val().time;
         var convertedFirstTrain = moment(firstTrain, "HH:mm").subtract(1, "years");
         console.log(convertedFirstTrain);
 
-        var currentTime = moment();
+        var currentTime = moment().format("HH:mm");
         console.log("current time: " + currentTime);
+
         var diffTime = moment().diff(moment(convertedFirstTrain), "minutes");
         console.log("difference in time: " + diffTime);
 
@@ -81,8 +85,8 @@ $(document).ready(function() {
 
         var minutesAway = trainFreq - timeApart;
 
-        var nextArrival = moment().add(minutesAway, "minutes");
-        console.log("Next train in: " + nextArrival);
+        var nextArrival = moment().add(minutesAway, "minutes").format("HH:mm");
+        console.log("Next train at: " + nextArrival);
 
 
         $("#current-schedule").append(`
