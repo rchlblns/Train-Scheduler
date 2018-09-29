@@ -21,16 +21,20 @@
     <div class="container pt-3">
         <div class="jumbotron jumbotron-fluid text-center">
             <div class="container">
-            <h1 class="display-4">Train Scheduler</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                to
-                featured content or information.</p>
+                <h1 class="display-4">Train Scheduler</h1>
+                <p class="lead"></p>
             </div>
+        </div>
+    </div>
+
+    <div class="container p-3 text-center">
+        <div class="current-time">
+            <h2>Current time is </h2>
         </div>
     </div>
     <br>
     <!-- Current train schedule -->
-    <div class="container table-responsive-sm-md p-3">
+    <div class="container table-responsive-sm-md p-3 text-center">
         <h2>Current Schedule</h2>
         <table class="table table-bordered table-hover" id="current-schedule">
             <thead class="thead-dark">
@@ -42,75 +46,43 @@
                     <th scope="col">Minutes Away</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Shinkansen</td>
-                    <td>Kyoto</td>
-                    <td>30</td>
-                    <td>16:25</td>
-                    <td>24</td>
-                </tr>
-                <tr>
-                    <td>Eurostar</td>
-                    <td>Brussels</td>
-                    <td>80</td>
-                    <td>12:00</td>
-                    <td>48</td>
-                </tr>
-                <tr>
-                    <td>Sunset Limited</td>
-                    <td>New Orleans</td>
-                    <td>110</td>
-                    <td>00:30</td>
-                    <td>32</td>
-                </tr>
-                <tr>
-                    <td>The Ghan</td>
-                    <td>Adelaide</td>
-                    <td>45</td>
-                    <td>21:45</td>
-                    <td>160</td>
-                </tr>
-                <tr>
-                    <td>Maharaja's Express</td>
-                    <td>Mumbai</td>
-                    <td>1500</td>
-                    <td>07:50</td>
-                    <td>1045</td>
-                </tr>
-            </tbody>
+            <tbody></tbody>
         </table>
 
     </div>
     <br>
     <!-- Form to add a new train to the schedule-->
-    <div class="container p-3">
+    <div class="container p-3 text-center">
         <h2>Add a new train</h2>
         <form>
-            <div class="form-group">
-                <label for="name">Train Name</label>
-                <input type="text" class="form-control" id="train-name" placeholder="Enter train name">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Train Name</label>
+                    <input type="text" class="form-control text-center" id="train-name" placeholder="Enter train name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control text-center" id="train-destination" placeholder="Enter destination">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="destination">Destination</label>
-                <input type="text" class="form-control" id="train-destination" placeholder="Enter destination">
-            </div>
-            <div class="form-group">
+            <div class="form-row">
+            <div class="form-group col-md-6">
                 <label for="time">First Train Time (Military Time)</label>
-                <input type="text" class="form-control" id="train-time" placeholder="HH:MM">
+                <input type="text" class="form-control text-center" id="train-time" placeholder="HH:MM">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label for="frequency">Frequency</label>
-                <input type="text" class="form-control" id="train-freq" placeholder="Enter frequency in minutes">
+                <input type="text" class="form-control text-center" id="train-freq" placeholder="Enter frequency in minutes">
             </div>
-            <button type="submit" class="btn btn-primary" id="add-train">Submit</button>
+            </div>
+            <button type="submit" class="btn btn-outline-dark" id="add-train">Submit</button>
         </form>
     </div>
 
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
-    
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -121,7 +93,7 @@
 
     <!-- Custom JS -->
     <script src="assets/javascript/app.js"></script>
-    
+
     <!-- Moment.js -->
     <script src="assets/javascript/moment.js"></script>
 
