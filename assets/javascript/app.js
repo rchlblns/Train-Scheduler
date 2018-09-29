@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     // Initialize Firebase
     var config = {
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     var database = firebase.database();
 
-    $("#add-train").on("click", function(event) {
+    $("#add-train").on("click", function (event) {
 
         event.preventDefault();
 
@@ -23,7 +23,7 @@ $(document).ready(function () {
         time = $("#train-time").val().trim();
         freq = $("#train-freq").val().trim();
 
-        database.ref().set({
+        database.ref().push({
 
             name: name,
             destination: destination,
@@ -33,5 +33,35 @@ $(document).ready(function () {
         });
 
     });
-    
+
+    database.ref().on("value", function(snapshot) {
+
+        console.log(snapshot.val());
+        console.log(snapshot.val().name);
+        console.log(snapshot.val().destination);
+        console.log(snapshot.val().time);
+        console.log(snapshot.val().freq);
+
+        $("#train-name").text(snapshot.val().name);
+        $("#train-destination").text(snapshot.val().destination);
+        $("#train-time").text(snapshot.val().time);
+        $("#train-freq").text(snapshot.val().freq);
+
+        }, function(errorObject) {
+            console.log("Error handled: " + errorObject.code);
+        
+        console.log(snapshot);
+
+    });
+
+    database.ref().on("child_added", function(snapshot){
+        $("#current-schedule").append(`
+        <tr>
+            <td>${snapshot.val().name}</td>
+            <td>${snapshot.val().destination}</td>
+            <td>${snapshot.val().freq}</td>
+            <td>${snapshot.val().time}</td>
+        </tr>
+        `)
+    });
 });

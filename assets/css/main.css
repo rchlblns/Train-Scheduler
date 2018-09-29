@@ -10,6 +10,15 @@ body, th {
     font-family: "Montserrat", sans-serif;
 }
 
+body {
+    background-image: url("../images/train.jpg");
+    background-size: cover;
+}
+
+.container, .jumbotron {
+    background: #f8f9fa;
+}
+
 /* Media Queries */
 
 /* Small devices (landscape phones, 576px and up) */
