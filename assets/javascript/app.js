@@ -36,43 +36,66 @@ $(document).ready(function() {
         // Uploads new train to database
         database.ref().push(newTrain);
 
+        //Empties submitted form data
         $("#train-name").empty("");
         $("#train-destination").empty("");
         $("#train-time").empty("");
         $("#train-freq").empty("");
     });
 
-    database.ref().on("value", function(snapshot) {
+    // database.ref().on("value", function(snapshot) {
 
-        console.log(snapshot.val());
-        console.log(snapshot.val().name);
-        console.log(snapshot.val().destination);
-        console.log(snapshot.val().time);
-        console.log(snapshot.val().freq);
+    //     // console.log(snapshot.val());
+    //     // console.log(snapshot.val().name);
+    //     // console.log(snapshot.val().destination);
+    //     // console.log(snapshot.val().time);
+    //     // console.log(snapshot.val().freq);
 
-        $("#train-name").text(snapshot.val().name);
-        $("#train-destination").text(snapshot.val().destination);
-        $("#train-time").text(snapshot.val().time);
-        $("#train-freq").text(snapshot.val().freq);
+    //     $("#train-name").text(snapshot.val().name);
+    //     $("#train-destination").text(snapshot.val().destination);
+    //     $("#train-time").text(snapshot.val().time);
+    //     $("#train-freq").text(snapshot.val().freq);
 
-        }, function(errorObject) {
-            console.log("Error handled: " + errorObject.code);
+    //     }, function(errorObject) {
+    //         console.log("Error handled: " + errorObject.code);
         
-        console.log(snapshot);
+    //     console.log(snapshot);
 
-    });
+    // });
 
+    // Display added train information from database to page
     database.ref().on("child_added", function(snapshot){
+        
+        var trainFreq = snapshot.val().freq;
+        var firstTrain = snapshot.val().time;
+        var convertedFirstTrain = moment(firstTrain, "HH:mm").subtract(1, "years");
+        console.log(convertedFirstTrain);
+
+        var currentTime = moment();
+        console.log("current time: " + currentTime);
+        var diffTime = moment().diff(moment(convertedFirstTrain), "minutes");
+        console.log("difference in time: " + diffTime);
+
+        var timeApart = diffTime % trainFreq;
+        console.log(timeApart);
+
+        var minutesAway = trainFreq - timeApart;
+
+        var nextArrival = moment().add(minutesAway, "minutes");
+        console.log("Next train in: " + nextArrival);
+
+
         $("#current-schedule").append(`
         <tr>
             <td>${snapshot.val().name}</td>
             <td>${snapshot.val().destination}</td>
             <td>${snapshot.val().freq}</td>
+            <td>${nextArrival}</td>
+            <td>${minutesAway}</td>
         </tr>
         `)
     });
 
-    // //Calculating how many mins away the train is and the next arrival time
-    // var firstTime = database.val().time
+
 
 });
