@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Initialize Firebase
     var config = {
@@ -17,22 +17,16 @@ $(document).ready(function() {
     // Adding new train to train schedule table
     $("#add-train").on("click", function (event) {
 
-        // //Empties submitted form data
-        // $("#train-name").empty("");
-        // $("#train-destination").empty("");
-        // $("#train-time").empty("");
-        // $("#train-freq").empty("");
-
         event.preventDefault();
 
         //Grabs user input from form 
-        name = $("#train-name").val().trim();
-        destination = $("#train-destination").val().trim();
-        time = $("#train-time").val().trim();
-        freq = $("#train-freq").val().trim();
+        name = $(".train-name").val().trim();
+        destination = $(".train-destination").val().trim();
+        time = $(".train-time").val().trim();
+        freq = $(".train-freq").val().trim();
 
         // Temp object to hold train data
-        var newTrain= {
+        var newTrain = {
             name: name,
             destination: destination,
             time: time,
@@ -43,15 +37,15 @@ $(document).ready(function() {
         database.ref().push(newTrain);
 
         //Empties submitted form data
-        $("#train-name").empty("");
-        $("#train-destination").empty("");
-        $("#train-time").empty("");
-        $("#train-freq").empty("");
+        $(".train-name").val("");
+        $(".train-destination").val("");
+        $(".train-time").val("");
+        $(".train-freq").val("");
 
     });
 
     // Display added train information from database to page
-    database.ref().on("child_added", function(snapshot){
+    database.ref().on("child_added", function (snapshot) {
 
         var trainFreq = snapshot.val().freq;
         console.log(snapshot.val().freq);
@@ -74,7 +68,7 @@ $(document).ready(function() {
         var nextArrival = moment().add(minutesAway, "minutes").format("HH:mm");
         console.log("Next train at: " + nextArrival);
 
-        $(".current-time").html("<h2> Current time is " + currentTime + "</h2>");
+        $(".current-time").html("<h2> Current time: " + currentTime + "</h2>");
 
         $("#current-schedule").append(`
         <tr>
@@ -86,5 +80,24 @@ $(document).ready(function() {
         </tr>
         `)
     });
+
+    // Form validation
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
 
 });
