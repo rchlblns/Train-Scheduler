@@ -18,26 +18,21 @@
 <body>
 
     <!-- Header -->
-    <div class="container pt-3">
-        <div class="jumbotron jumbotron-fluid text-center">
-            <div class="container">
-                <h1 class="display-4">Train Scheduler</h1>
-                <p class="lead"></p>
-            </div>
-        </div>
+    <div class="container p-5 text-center">
+        <h1 id="header">Train Scheduler</h1>
+        <p class="lead">Track where you need to go</p>
     </div>
-
+    <br>
+    <!-- Current time -->
     <div class="container p-3 text-center">
-        <div class="current-time">
-            <h2>Current time is </h2>
-        </div>
+        <div class="current-time"></div>
     </div>
     <br>
     <!-- Current train schedule -->
     <div class="container table-responsive-sm-md p-3 text-center">
         <h2>Schedule</h2>
-        <table class="table table-bordered table-hover" id="current-schedule">
-            <thead class="thead-dark">
+        <table class="table table-bordered" id="current-schedule">
+            <thead class="thead-light">
                 <tr>
                     <th scope="col">Train Name</th>
                     <th scope="col">Destination</th>
@@ -54,59 +49,35 @@
     <!-- Form to add a new train to the schedule-->
     <div class="container p-3 text-center">
         <h2>Add a new train</h2>
-        <form class="needs-validation" novalidate>
+        <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="validationCustom01">Train Name</label>
-                    <input type="text" class="train-name form-control text-center" id="validationCustom01" placeholder="Enter train name"
+                    <label for="validationDefault01">Train Name</label>
+                    <input type="text" class="train-name form-control text-center" id="validationDefault01" placeholder="Enter train name"
                         required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please add a name.
-                    </div>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="validationCustom02">Destination</label>
-                    <input type="text" class="train-destination form-control text-center" id="validationCustom02"
+                    <label for="validationDefault02">Destination</label>
+                    <input type="text" class="train-destination form-control text-center" id="validationDefault02"
                         placeholder="Enter destination" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter a destination.
-                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="validationCustom03">First Train Time (Military Time)</label>
-                    <input type="text" class="train-time form-control text-center" id="validationCustom03" placeholder="HH:MM"
+                    <label for="validationDefault03">First Train Time (Military Time)</label>
+                    <input type="text" class="train-time form-control text-center" id="validationDefault03" placeholder="HH:MM"
                         required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please enter a valid time.
-                    </div>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="validationCustom04">Frequency</label>
-                    <input type="text" class="train-freq form-control text-center" id="validationCustom04" placeholder="Enter frequency"
+                    <label for="validationDefault04">Frequency</label>
+                    <input type="text" class="train-freq form-control text-center" id="validationDefault04" placeholder="Enter frequency"
                         required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <div class="invalid-feedback">
-                        Please add a frequency.
-                    </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-outline-dark" id="add-train" data-toggle="modal" data-target="#confirmModal">Submit</button>
+            <button type="submit" class="btn btn-outline-light" id="add-train" data-toggle="modal" data-target="#confirmModal">Submit</button>
         </form>
 
-        <!-- Modal -->
+        <!-- Modal confirming form submission-->
         <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="submitLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -129,6 +100,9 @@
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
 
+    <!-- Moment.js -->
+    <script src="assets/javascript/moment.js"></script>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -139,9 +113,6 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
-    <!-- Moment.js -->
-    <script src="assets/javascript/moment.js"></script>
 
 </body>
 
