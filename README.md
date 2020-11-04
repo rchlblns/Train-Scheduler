@@ -1,4 +1,5 @@
-# TRAIN SCHEDULER
+# Train Scheduler
+![Train Scheduler screenshot](https://user-images.githubusercontent.com/41342213/98136553-afded780-1e86-11eb-80e3-ea9da53f1ca2.png)
 
 Created during Week 7 of UT Austin's Houston Coding Bootcamp. This application provdies up to date arrival and departure information on various trains.
 
